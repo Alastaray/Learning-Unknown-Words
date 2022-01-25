@@ -28,6 +28,8 @@ Window::Window(unsigned int _width, unsigned int _height, unsigned int position,
 }
 void Window::DrawFrame()
 {
+	int current_consoleCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(866);
 	GotoXY(px, py);
 	cout << borders[TopLeftAngle];
 	for (int i = 0; i < GetWidth(); i++)
@@ -53,6 +55,7 @@ void Window::DrawFrame()
 		cout << borders[HorizontalLine];
 	}
 	cout << borders[BotRightAngle] << endl;
+	SetConsoleOutputCP(current_consoleCP);
 }
 void Window::FillLine(int _x, int _y)
 {
@@ -225,8 +228,11 @@ void Table::DrawRows()
 void Table::DrawTable()
 {
 	DrawFrame();
+	int current_consoleCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(866);
 	if (cols)DrawCols();
 	if (rows)DrawRows();
+	SetConsoleOutputCP(current_consoleCP);
 }
 void Table::DrawHeadlines()
 {

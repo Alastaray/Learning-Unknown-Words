@@ -1,4 +1,3 @@
-#include <windows.h>
 #include "fun_console.h"
 
 void GotoXY(short px, short py) {
