@@ -1,5 +1,4 @@
 #include "fun_console.h"
-
 void GotoXY(short px, short py) {
 	COORD coord = { px,  py };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);

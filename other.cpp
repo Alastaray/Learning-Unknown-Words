@@ -1,4 +1,6 @@
 #include "Other.h"
+#include <stdlib.h>
+#include <ctime>
 
 
 char* IntToChar(int value)
@@ -209,4 +211,35 @@ void Input::DataPreparation(int max_len, int& px, int& py, int indent_letf, int 
 	for (int i = 0; i < max_len; i++)
 		cout << " ";
 	GotoXY(px, py);
+}
+
+
+
+
+RandomNumber::RandomNumber(int max, int min)
+{
+	this->mas = new int[max];
+	this->max = max;
+	this->min = min;
+	this->counter = 0;
+	srand(time(0));
+}
+int RandomNumber::GetRandomNumber()
+{
+	bool flag = false;
+	int number;
+	while (true)
+	{
+		if (counter == max)return -1;
+		number = rand() % (max - min) + min;
+		for (int i = 0; i < counter; i++)
+		{
+			if (mas[i] == number)flag = true;
+		}
+		if (!flag)break;
+		if (flag)flag = false;
+	}
+	mas[counter] = number;
+	counter++;
+	return number;
 }

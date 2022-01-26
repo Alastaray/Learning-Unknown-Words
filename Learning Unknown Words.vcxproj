@@ -142,14 +142,14 @@
     <ClCompile Include="DataProcessing.cpp" />
     <ClCompile Include="fun_console.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="other.cpp" />
+    <ClCompile Include="Other.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataProcessing.h" />
     <ClInclude Include="fun_console.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="other.h" />
+    <ClInclude Include="Other.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

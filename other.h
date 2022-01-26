@@ -25,3 +25,18 @@ private:
 	void DataPreparation(int max_len, int& px, int& py, int indent_letf = 0, int indent_top = 0);
 	char* buff;
 };
+
+
+class RandomNumber
+{
+public:
+	RandomNumber(int max, int min = 0);
+	~RandomNumber() { delete[]mas; }
+	int GetRandomNumber();
+protected:
+	int* mas;
+	int max,
+		min,
+		counter;
+};
+

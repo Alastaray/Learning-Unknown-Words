@@ -7,15 +7,16 @@
 using namespace std;
 
 
-class DataProcessing
+class FileDataProcessing
 {
 public:
-	DataProcessing(const char*, const char, const char);
-	~DataProcessing();
+	FileDataProcessing(const char*, const char, const char);
+	~FileDataProcessing();
 	void Read();
 	int GetNumberLines() { return number_lines; }
 	int GetNumberLetters() { return number_letters; }
-	
+	char* GetDataBeforeDelimiter(int index) { return before_delimiter[index]; }
+	char* GetDataAfterDelimiter(int index) { return after_delimiter[index]; }
 protected:
 	char symbol_end_file;
 	string delimiter;

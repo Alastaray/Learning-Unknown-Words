@@ -3,7 +3,7 @@
 
 
 
-DataProcessing::DataProcessing(const char* _filename, const char _word_delimiter, const char _symbol_end_file)
+FileDataProcessing::FileDataProcessing(const char* _filename, const char _word_delimiter, const char _symbol_end_file)
 {
 	filename = new char[strlen(_filename)+1];
 	strcpy(filename, _filename);
@@ -16,7 +16,7 @@ DataProcessing::DataProcessing(const char* _filename, const char _word_delimiter
 	after_delimiter = 0;
 	number_lines = number_letters = 0;
 }
-DataProcessing::~DataProcessing()
+FileDataProcessing::~FileDataProcessing()
 {
 	delete[]file_data;
 	delete[]filename;
@@ -27,7 +27,7 @@ DataProcessing::~DataProcessing()
 		delete[]after_delimiter[i];
 	delete[]after_delimiter;
 }
-void DataProcessing::CalculationFileData(fstream& file)
+void FileDataProcessing::CalculationFileData(fstream& file)
 {
 	file.seekg(ios::beg);
 	char buff[1000];
@@ -47,7 +47,7 @@ void DataProcessing::CalculationFileData(fstream& file)
 	file.seekg(ios::beg);
 	number_letters += number_lines;
 }
-void DataProcessing::DataCollection(fstream& file)
+void FileDataProcessing::DataCollection(fstream& file)
 {
 	file.seekg(ios::beg);
 	file.getline(file_data, number_letters, symbol_end_file);
@@ -58,13 +58,13 @@ void DataProcessing::DataCollection(fstream& file)
 		WriteData(i, after_delimiter, word);
 	}
 }
-void DataProcessing::SetSizeStorages()
+void FileDataProcessing::SetSizeStorages()
 {
 	file_data = new char[number_letters];
 	before_delimiter = new char* [number_lines];
 	after_delimiter = new char* [number_lines];
 }
-void DataProcessing::Read()
+void FileDataProcessing::Read()
 {
 	fstream file;
 	file.open(filename, ios::out | ios::in | ios::app);
@@ -73,7 +73,7 @@ void DataProcessing::Read()
 	DataCollection(file);
 	file.close();
 }
-void DataProcessing::WriteData(int index, char** destination, char*& pointer_strtok)
+void FileDataProcessing::WriteData(int index, char** destination, char*& pointer_strtok)
 {
 	destination[index] = new char[strlen(pointer_strtok) + 1];
 	strcpy(destination[index], pointer_strtok);
