@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "DataUsing.h"
 
 
 
@@ -12,8 +12,9 @@ void main()
 	try
 	{
 		FileDataProcessing* file_data = new FileDataProcessing(filename, '*', '$');
-		Display display(file_data);
-		display.Show();
+		DataUsing data_using(file_data);
+		data_using.UseData();
+		data_using.GetStatistics();
 		delete file_data;
 	}
 	catch (const std::exception& error)

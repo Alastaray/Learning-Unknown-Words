@@ -20,6 +20,7 @@ public:
 	~Input() { delete buff; }
 	char* GetRuStr(int max_len, int min_len = 0, int px = 0, int py = 0, int indent_letf = 0, int indent_top = 0);
 	char* GetEngStr(int max_len, int min_len = 0, int px = 0, int py = 0, int indent_letf = 0, int indent_top = 0);
+	char* GetStr(int max_len, int min_len = 0, int px = 0, int py = 0, int indent_letf = 0, int indent_top = 0);
 	bool Success() { return buff[0]; }
 private:
 	char* buff;
@@ -29,8 +30,8 @@ private:
 		Enter = 13,
 		Backspace = 8,
 		Space = 32,
-		a_eng = 'A',
-		z_eng = 'a',
+		a_eng = 'a',
+		z_eng = 'z',
 		a_ru = 224,
 		ya_ru = 255,
 	};

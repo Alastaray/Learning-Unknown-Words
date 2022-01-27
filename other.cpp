@@ -51,7 +51,26 @@ void Move(char& key, int& x, int& y, int how_change_x, int how_change_y)
 	}
 }
 
-
+char* Input::GetStr(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
+{
+	DataPreparation(max_len, px, py, indent_letf, indent_top);
+	int key, i = 0;
+	while (i < max_len)
+	{
+		key = _getch();
+		if (!Ñomplement(key, i, min_len))break;
+		if ((key >= a_eng && key <= z_eng) || (key >= a_ru && key <= ya_ru))
+		{
+			buff[i] = key;
+			i++;
+			buff[i] = 0;
+		}
+		GotoXY(px, py);
+		cout << buff;
+	}
+	ShowCaret(false);
+	return buff;
+}
 char* Input::GetRuStr(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
 {
 	DataPreparation(max_len, px, py, indent_letf, indent_top);
