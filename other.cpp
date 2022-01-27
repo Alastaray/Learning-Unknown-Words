@@ -3,27 +3,7 @@
 #include <ctime>
 
 
-char* IntToChar(int value)
-{
-	char str[100];
-	int len_value = 1;
-	bool negative = false;
-	if (value < 0)
-	{
-		negative = true;
-		len_value++;
-		value -= value * 2;
-	}
-	int val = value;
-	while ((val /= 10) > 0) len_value++;
-	for (int i = len_value - 1, j = 10, k = 1; i >= negative; i--, j *= 10, k *= 10)
-	{
-		str[i] = '0' + value % j / k;
-	}
-	if (negative)str[0] = '-';
-	str[len_value] = '\0';
-	return str;
-}
+
 bool CompareStr(const char* value, const char* source)
 {
 	int len = strlen(value),
@@ -152,7 +132,7 @@ char* Input::GetStr(int max_len, int min_len, int px, int py, int indent_letf, i
 			i++;
 			buff[i] = 0;
 		}
-		if ((key >= 'A' && key <= 'Z' && !i) || (key >= 'a' && key <= 'z'))
+		if ((key >= 'à' && key <= 'ÿ') || (key >= 'a' && key <= 'z'))
 		{
 			buff[i] = key;
 			i++;

@@ -1,9 +1,6 @@
 #include "Window.h"
 
 
-
-
-
 Window::Window(unsigned int _width, unsigned int _height, unsigned int position, int indent_letf, int indent_top)
 {
 	borders[TopLeftAngle] = 218;

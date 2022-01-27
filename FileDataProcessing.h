@@ -15,20 +15,25 @@ public:
 	void Read();
 	int GetNumberLines() { return number_lines; }
 	int GetNumberLetters() { return number_letters; }
-	char* GetDataBeforeDelimiter(int index) { return before_delimiter[index]; }
-	char* GetDataAfterDelimiter(int index) { return after_delimiter[index]; }
+	char* GetDataBeforeDelimiter(int index) { return data_before_delimiter[index]; }
+	char* GetDataAfterDelimiter(int index) { return data_after_delimiter[index]; }
+	void SetFileName(const char*);
+	void SetDelimiter(const char);
+	void SetSymbolEndFile(const char);
 protected:
 	char symbol_end_file;
 	string delimiter;
 	char* file_data,
 		* filename;
-	char** before_delimiter,
-		** after_delimiter;
+	char** data_before_delimiter,
+		** data_after_delimiter;
 	int number_lines,
 		number_letters;
 
+	void DeleteDataAfterDelimiter();
+	void DeleteDataBeforeDelimiter();
 	void CalculationFileData(fstream&);
-	void DataCollection(fstream&);
+	void SortData(fstream&);
 	void SetSizeStorages();	
 	void WriteData(int, char**, char*&);
 };

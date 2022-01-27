@@ -33,8 +33,8 @@ enum BordersName
 class Window
 {
 public:
-	Window(unsigned int, unsigned int, unsigned int, int indent_letf = 0, int indent_top = 0);
-	void SetWinParam(unsigned int, unsigned int, unsigned int, int indent_letf = 0, int indent_top = 0);
+	Window(unsigned int _width, unsigned int _height, unsigned int position, int indent_letf = 0, int indent_top = 0);
+	void SetWinParam(unsigned int _width, unsigned int _height, unsigned int position, int indent_letf = 0, int indent_top = 0);
 	void DrawFrame();
 	virtual void FillLine(int _x = 0, int _y = 0);
 	int GetWidth() { return width - 2; }
