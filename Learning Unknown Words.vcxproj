@@ -139,17 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DataProcessing.cpp" />
+    <ClCompile Include="FileDataProcessing.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="fun_console.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="other.cpp" />
+    <ClCompile Include="Other.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataProcessing.h" />
+    <ClInclude Include="FileDataProcessing.h" />
+    <ClInclude Include="Display.h" />
     <ClInclude Include="fun_console.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="other.h" />
+    <ClInclude Include="Other.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

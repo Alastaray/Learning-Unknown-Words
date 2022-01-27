@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DataProcessing.cpp">
+    <ClCompile Include="FileDataProcessing.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="fun_console.cpp">
@@ -24,15 +24,18 @@
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="other.cpp">
+    <ClCompile Include="Other.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataProcessing.h">
+    <ClInclude Include="FileDataProcessing.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="fun_console.h">
@@ -41,10 +44,13 @@
     <ClInclude Include="List.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="other.h">
+    <ClInclude Include="Other.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
