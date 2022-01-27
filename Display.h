@@ -9,7 +9,7 @@ public:
 	Display(FileDataProcessing* _file_data);
 	~Display();
 	bool Show(bool reverse = false);
-	void DisplayData(char* first_mas, char* second_mas);
+	bool DisplayData(char* first_mas, char* second_mas);
 protected:
 	FileDataProcessing* file_data;
 	RandomNumber* random;

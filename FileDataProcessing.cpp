@@ -65,6 +65,11 @@ void FileDataProcessing::Read()
 	if (number_lines || number_letters)number_lines = number_letters = 0;
 	fstream file;
 	file.open(filename, ios::out | ios::in | ios::app);
+	if (IsEmpty(file))
+	{
+		file.close();
+		throw exception((string(this->filename) + " is empty!").c_str());
+	}
 	CalculationFileData(file);
 	SetSizeStorages();
 	SortData(file);

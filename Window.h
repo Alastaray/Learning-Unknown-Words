@@ -1,7 +1,7 @@
 #pragma once
 #include "List.h"
 #include "Other.h"
-
+#pragma warning(disable: 4996)
 
 
 enum position

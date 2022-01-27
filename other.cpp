@@ -1,7 +1,4 @@
 #include "Other.h"
-#include <stdlib.h>
-#include <ctime>
-
 
 
 bool CompareStr(const char* value, const char* source)
@@ -55,84 +52,15 @@ void Move(char& key, int& x, int& y, int how_change_x, int how_change_y)
 }
 
 
-
-int Input::GetInt(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
+char* Input::GetRuStr(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
 {
 	DataPreparation(max_len, px, py, indent_letf, indent_top);
 	int key, i = 0;
 	while (i < max_len)
 	{
-		key = _getch();
-		if (key == 27) { ShowCaret(false);  buff[0] = 0; return 0; }
-		if (key == 13) { if (i >= min_len)break; }
-		if (key == 8)
-		{
-			buff[--i] = 0;
-			GotoXY(GetCurrentX() - 1, GetCurrentY());
-			cout << " ";
-		}
-		if (key >= '0' && key <= '9') {
-			buff[i] = key;
-			i++;
-			buff[i] = 0;
-		}
-		GotoXY(px, py);
-		cout << buff;
-	}
-	ShowCaret(false);
-	return atoi(buff);
-}
-double Input::GetDouble(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
-{
-	DataPreparation(max_len, px, py, indent_letf, indent_top);
-	int key, i = 0;
-	bool is_dot = false;
-	while (i < max_len)
-	{
-		key = _getch();
-		if (key == 27) { ShowCaret(false);  buff[0] = 0; return 0; }
-		if (key == 13) { if (i >= min_len)break; }
-		if (key == 8)
-		{
-			buff[--i] = 0;
-			GotoXY(GetCurrentX() - 1, GetCurrentY());
-			cout << " ";
-		}
-		if ((key >= '0' && key <= '9') || (key == '.' && !is_dot))
-		{
-			if (key == '.')is_dot = true;
-			buff[i] = key;
-			i++;
-			buff[i] = 0;
-		}
-		GotoXY(px, py);
-		cout << buff;
-	}
-	ShowCaret(false);
-	return atof(buff);
-}
-char* Input::GetStr(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
-{
-	DataPreparation(max_len, px, py, indent_letf, indent_top);
-	int key, i = 0;
-	while (i < max_len)
-	{
-		key = _getch();
-		if (key == 27) { ShowCaret(false);  buff[0] = 0; return buff; }
-		if (key == 13) { if (i >= min_len)break; }
-		if (key == 8)
-		{
-			buff[--i] = 0;
-			GotoXY(GetCurrentX() - 1, GetCurrentY());
-			cout << " ";
-		}
-		if (key == 32)
-		{
-			buff[i] = key;
-			i++;
-			buff[i] = 0;
-		}
-		if ((key >= 'à' && key <= 'ÿ') || (key >= 'a' && key <= 'z'))
+		key = getch();
+		if (!Ñomplement(key, i, min_len))break;
+		if (key >= a_ru && key <= ya_ru)
 		{
 			buff[i] = key;
 			i++;
@@ -144,31 +72,16 @@ char* Input::GetStr(int max_len, int min_len, int px, int py, int indent_letf, i
 	ShowCaret(false);
 	return buff;
 }
-char* Input::GetData(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
+char* Input::GetEngStr(int max_len, int min_len, int px, int py, int indent_letf, int indent_top)
 {
 	DataPreparation(max_len, px, py, indent_letf, indent_top);
 	int key, i = 0;
-	bool is_dot = false;
 	while (i < max_len)
 	{
-		key = _getch();
-		if (key == 27) { ShowCaret(false);  buff[0] = 0; return buff; }
-		if (key == 13) { if (i >= min_len)break; }
-		if (key == 8)
+		key = getch();
+		if (!Ñomplement(key, i, min_len))break;
+		if (key >= a_eng && key <= z_eng)
 		{
-			buff[--i] = 0;
-			GotoXY(GetCurrentX() - 1, GetCurrentY());
-			cout << " ";
-		}
-		if (key == 32)
-		{
-			buff[i] = key;
-			i++;
-			buff[i] = 0;
-		}
-		if ((key >= 'A' && key <= 'Z' && !i) || (key >= 'a' && key <= 'z') || (key >= '0' && key <= '9') || (key == '.' && !is_dot))
-		{
-			if (key == '.')is_dot = true;
 			buff[i] = key;
 			i++;
 			buff[i] = 0;
@@ -192,7 +105,24 @@ void Input::DataPreparation(int max_len, int& px, int& py, int indent_letf, int 
 		cout << " ";
 	GotoXY(px, py);
 }
-
+bool Input::Ñomplement(int key, int &iter, int min_len)
+{
+	if (key == Esc) { buff[0] = 0; return false; }
+	if (key == Enter) { if (iter >= min_len)return false; }
+	if (key == Backspace)
+	{
+		buff[--iter] = 0;
+		GotoXY(GetCurrentX() - 1, GetCurrentY());
+		cout << " ";
+	}
+	if (key == Space)
+	{
+		buff[iter] = key;
+		iter++;
+		buff[iter] = 0;
+	}
+	return true;
+}
 
 
 
