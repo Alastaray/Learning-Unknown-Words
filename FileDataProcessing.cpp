@@ -47,8 +47,8 @@ void FileDataProcessing::SortData(fstream& file)
 	char* word = strtok(file_data, delimiter.c_str());
 	for (int i = 0; i < number_lines; i++)
 	{
-		WriteData(i, data_before_delimiter, word);
-		WriteData(i, data_after_delimiter, word);
+		RecordData(i, data_before_delimiter, word);
+		RecordData(i, data_after_delimiter, word);
 	}
 }
 void FileDataProcessing::SetSizeStorages()
@@ -75,10 +75,24 @@ void FileDataProcessing::Read()
 	SortData(file);
 	file.close();
 }
-void FileDataProcessing::WriteData(int index, char** destination, char*& pointer_strtok)
+void FileDataProcessing::RecordData(int index, char** destination, char*& pointer_strtok)
 {
 	destination[index] = new char[strlen(pointer_strtok) + 1];
 	strcpy(destination[index], pointer_strtok);
+	if (destination[index][strlen(destination[index]) - 1] == ' ')
+		destination[index][strlen(destination[index]) - 1] = '\0';
+	while (destination[index][0] == ' ')
+	{
+		char* buff = new char[strlen(destination[index]) + 1];
+		strcpy(buff, destination[index]);
+		int i, j;
+		for (i = 0, j = 1; j < strlen(buff); i++, j++)
+		{
+			destination[index][i] = buff[j];
+		}
+		destination[index][i] = '\0';
+		delete[]buff;
+	}
 	pointer_strtok = strtok(0, delimiter.c_str());
 }
 void FileDataProcessing::DeleteDataAfterDelimiter()

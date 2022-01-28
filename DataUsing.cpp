@@ -13,25 +13,24 @@ DataUsing::~DataUsing()
 {
 	delete random;
 }
-bool DataUsing::UseData(bool reverse)
+void DataUsing::UseData(bool reverse)
 {
 	while (true)
 	{
 		int number = random->GetRandomNumber();
-		if (number == -1)return false;
+		if (number == -1)break;
 		if (reverse)
 		{
 			if (!ShowData(file_data->GetDataAfterDelimiter(number), file_data->GetDataBeforeDelimiter(number)))
-				return false;
+				break;
 		}			
 		else
 		{
 			if (!ShowData(file_data->GetDataBeforeDelimiter(number), file_data->GetDataAfterDelimiter(number)))
-				return false;
+				break;
 		}
-			
 	};
-	return true;
+	GetStatistics();
 }
 bool DataUsing::ShowData(const char* first_mas, const char* second_mas)
 {
@@ -69,7 +68,7 @@ void DataUsing::GetStatistics()
 	Table table(42, 1, CenterTop, 3, 0,0,10);
 	table.AddHeadline("Right Answers");
 	table.AddHeadline("Wrong Answers");
-	table.AddHeadline("Total Answers");
+	table.AddHeadline("Total Questions");
 	table.DrawTable();
 	table.DrawHeadlines();
 	table.WriteLine(right_answers, indent_left);

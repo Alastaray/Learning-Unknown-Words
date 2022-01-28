@@ -59,7 +59,8 @@ char* Input::GetStr(int max_len, int min_len, int px, int py, int indent_letf, i
 	{
 		key = _getch();
 		if (!Ñomplement(key, i, min_len))break;
-		if ((key >= a_eng && key <= z_eng) || (key >= a_ru && key <= ya_ru))
+		if ((key >= a_eng && key <= z_eng) || (key >= a_ru && key <= ya_ru) || 
+			(key == Comma && buff[i - 1]!= Comma && buff[i - 1] != Space && i != 0))
 		{
 			buff[i] = key;
 			i++;
@@ -128,7 +129,7 @@ bool Input::Ñomplement(int key, int &iter, int min_len)
 {
 	if (key == Esc) { buff[0] = 0; return false; }
 	if (key == Enter) { if (iter >= min_len)return false; }
-	if (key == Backspace)
+	if (key == Backspace && iter != 0)
 	{
 		buff[--iter] = 0;
 		GotoXY(GetCurrentX() - 1, GetCurrentY());

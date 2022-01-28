@@ -122,7 +122,7 @@ void Menu::SetMenuParam(int indent_letf, int indent_top)
 			len = strlen(menu_items[i]);
 			if (width < len)width = len;
 		}
-		SetWinParam(width + 8, menu_items.GetCount() * 2 + 1, position, indent_letf, indent_top);
+		SetWinParam(width + 8, menu_items.GetCount() * 2 - 1, position, indent_letf, indent_top);
 	}
 }
 int Menu::DoMenu()

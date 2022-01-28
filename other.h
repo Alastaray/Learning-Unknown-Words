@@ -34,6 +34,7 @@ private:
 		z_eng = 'z',
 		a_ru = 224,
 		ya_ru = 255,
+		Comma = ','
 	};
 	bool Ñomplement(int key,int &iter, int min_len);
 	void DataPreparation(int max_len, int& px, int& py, int indent_letf = 0, int indent_top = 0);
