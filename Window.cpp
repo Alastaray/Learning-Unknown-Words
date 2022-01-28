@@ -65,8 +65,8 @@ void Window::SetWinParam(unsigned int _width, unsigned int _height, unsigned int
 {
 	indent_letf = _indent_letf;
 	indent_top = _indent_top;
-	height = _height;
-	width = _width;
+	height = _height + 2;
+	width = _width + 2;
 	switch (position)
 	{
 	case LeftTop:
@@ -122,7 +122,7 @@ void Menu::SetMenuParam(int indent_letf, int indent_top)
 			len = strlen(menu_items[i]);
 			if (width < len)width = len;
 		}
-		SetWinParam(width + 8, menu_items.GetCount() * 2 + 1, position, indent_letf, indent_top);
+		SetWinParam(width + 8, menu_items.GetCount() * 2 - 1, position, indent_letf, indent_top);
 	}
 }
 int Menu::DoMenu()
@@ -233,15 +233,13 @@ void Table::DrawTable()
 }
 void Table::DrawHeadlines()
 {
-	size_col = width / cols;
 	int pos_x = 0;
 	for (int j = 0; j < cols; j++)
 	{
-		WriteLine(headlines[j], pos_x, (-indent_top));
+		WriteLine(headlines[j], pos_x, (-2));
 		pos_x += size_col;
 	}
-
-};
+}
 void Table::SetCols(unsigned int num_cols)
 {
 	if (num_cols > 0)

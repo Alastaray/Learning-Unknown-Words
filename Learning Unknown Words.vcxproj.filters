@@ -30,7 +30,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Display.cpp">
+    <ClCompile Include="DataUsing.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClInclude Include="Window.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Display.h">
+    <ClInclude Include="DataUsing.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

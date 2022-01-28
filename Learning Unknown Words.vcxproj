@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FileDataProcessing.cpp" />
-    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="DataUsing.cpp" />
     <ClCompile Include="fun_console.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Other.cpp" />
@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileDataProcessing.h" />
-    <ClInclude Include="Display.h" />
+    <ClInclude Include="DataUsing.h" />
     <ClInclude Include="fun_console.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Other.h" />

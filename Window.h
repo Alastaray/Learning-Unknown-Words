@@ -1,7 +1,7 @@
 #pragma once
 #include "List.h"
 #include "Other.h"
-
+#pragma warning(disable: 4996)
 
 
 enum position
@@ -154,7 +154,7 @@ public:
 };
 
 template <class type>
-void DrawSomething(const type& something, bool frame = false, unsigned int _width = 17, unsigned int _height = 3, unsigned int position = CenterTop, int indent_letf = 10, int indent_top = 12)
+void DrawSomething(const type& something, bool frame = false, unsigned int _width = 17, unsigned int _height = 3, unsigned int position = CenterTop, int indent_letf = 5, int indent_top = 12)
 {
 	cls();
 	Window msg(_width, _height, position, indent_letf, indent_top);

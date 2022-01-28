@@ -35,7 +35,7 @@ protected:
 	void CalculationFileData(fstream&);
 	void SortData(fstream&);
 	void SetSizeStorages();	
-	void WriteData(int, char**, char*&);
+	void RecordData(int, char**, char*&);
 };
 
 
