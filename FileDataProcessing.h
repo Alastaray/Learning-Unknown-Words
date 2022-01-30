@@ -23,7 +23,7 @@ public:
 protected:
 	char symbol_end_file;
 	string delimiter;
-	char* file_data,
+	char* file_data, 
 		* filename;
 	char** data_before_delimiter,
 		** data_after_delimiter;

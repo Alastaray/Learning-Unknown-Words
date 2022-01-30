@@ -173,3 +173,22 @@ int RandomNumber::GetRandomNumber()
 	counter++;
 	return number;
 }
+void RandomNumber::PreFill(int value)
+{
+	mas[counter] = value;
+	counter++;
+}
+void RandomNumber::PreFill(int* source, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		mas[counter] = source[i];
+		counter++;
+	}
+}
+void RandomNumber::Reset()
+{
+	delete[]mas;
+	mas = new int[max];
+	counter = 0;
+}
