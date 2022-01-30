@@ -44,6 +44,7 @@ public:
 	void RemoveAt(int ind);
 	Node* GetHead() { return head; }
 	Node* GetTail() { return tail; }
+	int GetSizeOfType() { return sizeof(type); }
 	int GetCount()const { return count; }
 	Node* GetCertain(int ind)const
 	{
