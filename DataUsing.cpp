@@ -6,7 +6,6 @@ Display::Display(FileDataProcessing* _file_data, const char* path_right_answers)
 {
 	SetPathRightAnswers(path_right_answers);
 	file_data = _file_data;
-	file_data->Read();
 	random = new RandomNumber(file_data->GetNumberLines());
 }
 void Display::ShowPreparation()
@@ -78,6 +77,31 @@ void Display::SetPathRightAnswers(const char* _path_right_answers)
 	if (path_right_answers)delete[]path_right_answers;
 	path_right_answers = new char[strlen(_path_right_answers) + 1];
 	strcpy(path_right_answers, _path_right_answers);
+}
+void Display::Add()
+{
+	cls();
+	const char hyphen[] = " - ";
+	List <string> new_data;
+	Window win(0, 0, CenterTop, 10, 10);
+	Input Cin;
+	int i = 0;
+	while (true)
+	{
+		win.WriteLine("Write new English words:");
+		new_data << Cin.GetEngStr(50, 2, win.GetX(), win.GetY() + 2);
+		cls();
+		if (!Cin.Success())break;
+		win.WriteLine("Write new Russian words:");
+		win.WriteLine((string(new_data[i]) + hyphen), 0 - strlen(new_data[i].c_str()) - strlen(hyphen), 2);
+		new_data << Cin.GetRuStr(50, 2, win.GetX(), win.GetY() + 2);
+		cls();
+		if (!Cin.Success())break;
+		i += 2;
+	}
+	if (new_data.GetCount() % 2 != 0)
+		new_data.RemoveAt(new_data.GetCount() - 1);
+	file_data->Write(new_data);
 }
 
 

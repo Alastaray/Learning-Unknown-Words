@@ -3,6 +3,7 @@
 #include <fstream>
 #include <windows.h>
 #include <conio.h>
+#include "List.h"
 #pragma warning(disable: 4996)
 using namespace std;
 
@@ -10,19 +11,21 @@ using namespace std;
 class FileDataProcessing
 {
 public:
-	FileDataProcessing(const char*, const char, const char);
+	FileDataProcessing(const char* _filename, const char _delimiter);
 	~FileDataProcessing();
 	void Read();
 	int GetNumberLines() { return number_lines; }
 	int GetNumberLetters() { return number_letters; }
 	char* GetDataBeforeDelimiter(int index) { return data_before_delimiter[index]; }
 	char* GetDataAfterDelimiter(int index) { return data_after_delimiter[index]; }
-	void SetFileName(const char*);
-	void SetDelimiter(const char);
-	void SetSymbolEndFile(const char);
+	void SetFileName(const char* _filename);
+	void SetDelimiter(const char _delimiter);
+	void Write(List<string>& data);
+
 protected:
-	char symbol_end_file;
-	string delimiter;
+	string delim;
+	char symbol_end_file,
+				delimiter;
 	char* file_data, 
 		* filename;
 	char** data_before_delimiter,

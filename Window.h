@@ -154,13 +154,12 @@ public:
 };
 
 template <class type>
-void DrawSomething(const type& something, bool frame = false, unsigned int _width = 17, unsigned int _height = 3, unsigned int position = CenterTop, int indent_letf = 5, int indent_top = 12)
+void DrawSomething(const type& something, bool frame = false, bool _cls = true, bool getch_ = true, unsigned int width = 17, unsigned int height = 3, unsigned int position = CenterTop, int indent_letf = 5, int indent_top = 12)
 {
-	cls();
-	Window msg(_width, _height, position, indent_letf, indent_top);
+	if (_cls)cls();
+	Window msg(width, height, position, indent_letf, indent_top);
 	if (frame) msg.DrawFrame(something);
 	else msg.WriteLine(something);
-	_getch();
-	cls();
+	if (getch_)getch();
+	if (_cls)cls();
 }
-

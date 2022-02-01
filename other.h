@@ -4,7 +4,6 @@
 #include "fun_console.h"
 #include <stdlib.h>
 #include <ctime>
-#include "Window.h"
 using namespace std;
 #pragma warning(disable: 4996)
 

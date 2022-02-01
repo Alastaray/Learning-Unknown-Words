@@ -35,6 +35,7 @@ public:
 	bool ShowData(const char* first_mas, const char* second_mas);	
 	void ShowStatistic();
 	void SetPathRightAnswers(const char* _path_right_answers);
+	void Add();
 protected:
 	char* path_right_answers;
 	Statistic* statistic;

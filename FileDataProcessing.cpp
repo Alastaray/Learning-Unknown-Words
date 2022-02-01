@@ -3,11 +3,11 @@
 
 
 
-FileDataProcessing::FileDataProcessing(const char* _filename, const char _delimiter, const char _symbol_end_file)
+FileDataProcessing::FileDataProcessing(const char* _filename, const char _delimiter)
 {
 	SetFileName(_filename);
 	SetDelimiter(_delimiter);
-	SetSymbolEndFile(_symbol_end_file);
+	symbol_end_file = '$';
 	file_data = 0;
 	data_before_delimiter = 0;
 	data_after_delimiter = 0;
@@ -44,7 +44,7 @@ void FileDataProcessing::SortData(fstream& file)
 {
 	file.seekg(ios::beg);
 	file.getline(file_data, number_letters, symbol_end_file);
-	char* word = strtok(file_data, delimiter.c_str());
+	char* word = strtok(file_data, delim.c_str());
 	for (int i = 0; i < number_lines; i++)
 	{
 		RecordData(i, data_before_delimiter, word);
@@ -93,7 +93,7 @@ void FileDataProcessing::RecordData(int index, char** destination, char*& pointe
 		destination[index][i] = '\0';
 		delete[]buff;
 	}
-	pointer_strtok = strtok(0, delimiter.c_str());
+	pointer_strtok = strtok(0, delim.c_str());
 }
 void FileDataProcessing::DeleteDataAfterDelimiter()
 {
@@ -115,13 +115,22 @@ void FileDataProcessing::SetFileName(const char* _filename)
 }
 void FileDataProcessing::SetDelimiter(const char _delimiter)
 {
-	delimiter = "";
 	delimiter += _delimiter;
-	delimiter += '\n';
+	delim = "";
+	delim += _delimiter;
+	delim += '\n';
 }
-void FileDataProcessing::SetSymbolEndFile(const char _symbol_end_file)
+void FileDataProcessing::Write(List<string>& data)
 {
-	symbol_end_file = _symbol_end_file;
+	fstream file;
+	file.open(filename, ios::in | ios::out | ios::app);
+	bool is_empty = IsEmpty(file);
+	for (int i = 0; i < data.GetCount(); i+=2)
+	{
+		if(is_empty && i==0)file << data[i] << " " << delimiter << " " << data[i + 1];
+		else file << "\n" << data[i] << " " << delimiter << " " << data[i + 1];
+	}
+	file.close();
 }
 
 bool IsEmpty(fstream& file)
